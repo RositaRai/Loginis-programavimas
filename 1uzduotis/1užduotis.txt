@@ -1,0 +1,22 @@
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Ivertinimai/PS4-1.html
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Uzduotys/Uzduotis1.html
+
+1 Užduotis - Reliaciniai sąryšiai
+
+Apibrėžti paskirtus keturis predikatus. Likusių variantų sprendimą sugebėti paaiškinti, esant reikalui. Nubraižyti programoje aprašytą genealoginį medį (savo arba išgalvotą). Genealoginį medį braižyti galima ir popieriuje arba kuria nors kompiuterių programa (pvz., Gimp). Atkreipkite dėmesį, kad ir nubraižytą genealoginį medį reikia įkelti į virtualią mokymosi aplinką.
+
+Užduoties sąlyga
+
+Duomenų bazėje saugomi duomenys apie asmenis ir jų giminystės ryšius faktais:
+
+asmuo(Vardas, Lytis, Amžius, Pomėgis);
+mama(Mama, Vaikas);
+pora(Vyras, Žmona).
+
+1. tevas(Tevas, Vaikas) - Pirmasis asmuo (Tevas) yra antrojo (Vaikas) tėvas;
+
+16. anukas(Anukas, SenelisSenele) - Pirmasis asmuo (Anukas) yra antrojo (SenelisSenele) anūkas (bet ne anūkė!);
+
+35. tmbml(Berniukas1, Berniukas2, Berniukas3) - „Trys maži berniukai - Berniukas1, Berniukas2 ir Berniukas3 - mėgsta limonadą“ (kas yra „maži“, nuspręskite patys);
+
+44. at_suk(Asmuo, N) - Asmuo Asmuo atšventė N apvalių sukakčių;
