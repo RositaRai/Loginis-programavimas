@@ -1,0 +1,63 @@
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Ivertinimai/PS4-1.html
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Uzduotys/Uzduotis2.html
+
+variantai: 1.2; 5.1
+
+1. Duotas miestus jungiančių kelių tinklas. Keliai vienakrypčiai, nesudarantys ciklų. 
+Kiekvienas kelias turi savo ilgį. Ši informacija išreiškiama faktais kelias(Miestas1, Miestas2, Atstumas). 
+Apibrėžkite predikatą „galima nuvažiuoti iš miesto X į miestą Y“:
+
+	1.2. nuvažiavus lygiai L kilometrų.
+
+
+5. Apibrėžkite predikatą realizuojantį nurodytą sveikaskaitę operaciją nenaudodami daugybos (*, **) ir dalybos (/, div, mod) 
+Prolog operatorių. Predikatuose, realizuojančiuose dalybą, vadovaukitės Euklidinės dalybos apibrėžimu:
+
+	5.1. daugyba. Pavyzdžiui:
+		 ?- daugyba(7,-3,Sandauga).
+		 Sandauga = -21.
+		 
+		
+		
+Paleidimas:
+cd C:\Users\Rosita\OneDrive\Dokumentai\VII. Loginis programavimas
+swipl -l 2uzduotis.pl
+
+Geri dalykai:
+findall(X, kelione(plunge, X, _), List).
+setof(X, kelione(plunge, X, _), List).
+
+
+Jei keliuose eitu ciklai:
+/*
+findapath(Miestas1, Miestas2, Atstumas, [Miestas1,Miestas2], _) :- kelias(Miestas1, Miestas2, Atstumas).
+findapath(Miestas1, Miestas2, Atstumas, [Miestas1|Marsrutas], Aplankyti) :- \+ member(Miestas1, Aplankyti),
+                                                                            kelias(Miestas1, MiestasT, Atstumas1),
+                                                                            findapath(MiestasT, Miestas2, Atstumas2, Marsrutas, [Miestas1|Aplankyti]),
+                                                                            Atstumas is Atstumas1 + Atstumas2.
+*/
+
+Kitas variantas:
+kelione(Miestas1, Miestas2, Atstumas) :- kelias(Miestas1, Miestas11, Atstumas1), Tarpinis is (Atstumas-Atstumas1), kelione(Miestas11, Miestas2, Tarpinis).
+
+
+
+findapath(Miestas1, Miestas2, Atstumas, [Miestas1,Miestas2]) :-  kelias(Miestas1, Miestas2, Atstumas).
+findapath(Miestas1, Miestas2, Atstumas, [Miestas1|Marsrutas]) :- kelias(Miestas1, MiestasT, Atstumas1),
+                                                                 findapath(MiestasT, Miestas2, Atstumas2, Marsrutas),
+                                                                 Atstumas is Atstumas1 + Atstumas2.
+
+/*
+findapath(plunge, vilnius, 300, Path).
+    Path = [plunge, rietavas, kaunas, vilnius];
+    Path = [plunge, kaunas, vilnius];
+*/
+
+
+/*
+daugyba(0, _, 0).
+daugyba(_, 0, 0).
+daugyba(X, Y, Sandauga) :- Y > 0,  Y0 is Y-1, daugyba(X, Y0, Sandauga0), Sandauga is Sandauga0 + X.
+daugyba(X, Y, Sandauga) :- X > 0, Y < 0,  Y0 is abs(Y)-1, daugyba(X, Y0, Sandauga0), Sandauga is -(Sandauga0 + X).
+daugyba(X, Y, Sandauga) :- X < 0, Y < 0,  Y0 is abs(Y)-1, X0 is abs(X), daugyba(X0, Y0, Sandauga0), Sandauga is Sandauga0 + X0.
+*/
