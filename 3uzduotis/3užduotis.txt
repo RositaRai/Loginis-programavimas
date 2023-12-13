@@ -1,0 +1,45 @@
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Ivertinimai/PS4-1.html
+https://klevas.mif.vu.lt/~julius/2023Rud/LogProg/Uzduotys/Uzduotis2.html
+
+Paleidimas:
+cd C:\Users\Rosita\OneDrive\Dokumentai\VII. Loginis programavimas
+swipl -l 3uzduotis.pl
+
+Variantai:
+1.6; 2.8; 3.7; 4.6
+
+Apibrėžkite paskirtus keturis predikatus pagal nurodytas sąlygas. 
+Nors kai kurių užduočių formulavimas yra procedūrinis, reikia siekti, kiek įmanoma, deklaratyvios programos. 
+Nenaudokite Prolog darbo su sąrašais predikatų. 
+Pasiaiškinkite, kaip taikomas atkirtos (!) operatorius ir kur jį galima būtų panaudoti Jūsų predikatuose.
+
+1. Paprasti predikatai su sveikųjų skaičių sąrašais:
+	1.6 min(S,M) - skaičius M - mažiausias skaičių sąrašo S elementas. 
+	Pavyzdžiui:
+		?- min([4,10,-2,-1],M).
+		M = -2.
+		
+2. Paprasti nearitmetiniai predikatai:
+	2.8 i_pozicija(S,I,K,R) - sąrašas R gautas į duotąjį sąrašą S, prieš I-ąjį elementą įterpus K. 
+	Pavyzdžiui:
+		?- i_pozicija([10,2,14,8,1],3,123,R).
+		R = [10,2,123,14,8,1].
+
+3. Sudėtingesni predikatai:
+	3.7 keisti(S,K,R) - duotas sąrašas S. Duotas sąrašas K, nusakantis keitinį ir susidedantis iš 
+	elementų pavidalo k(KeiciamasSimbolis, PakeistasSimbolis). 
+	R - rezultatas, gautas pritaikius sąrašui S keitinį K. 
+	Pavyzdžiui:
+		?- keisti([a,c,b],[k(a,x),k(b,y)],R).
+		R = [x,c,y].
+		
+4. Operacijos su natūraliaisiais skaičiais, išreikštais skaitmenų sąrašais. 
+Skaitmenų sąrašo elementai turi būti natūralūs skaičiai nuo 0 iki 9 (ne simboliai '0', '1',...). 
+Nenaudokite Prolog konvertavimo tarp sąrašo ir skaičiaus predikatų (number_chars/2, number_codes/2 ir kt...):
+	4.6 sesiolik_i_devejet(Ses,Dvej) - Ses yra skaičius vaizduojami šešioliktainių skaitmenų sąrašu. 
+	Dvej - tas pats skaičiaus, vaizduojamas dvejetainių skaitmenų sąrašu. 
+	Pavyzdžiui:
+		?- sesiolik_i_devejet([2, d],Dvej).
+		Dvej = [1,0,1,1,0,1].
+		
+		
